@@ -5,8 +5,8 @@ namespace Final_Project_Group_1.controller
 {
     [Route ("api/[controller]")]
     [ApiController]
-    public class VariableController : ControllerBase
+    public class Controller1 : ControllerBase
     {
-        
+        private readonly ILogger<Controller1> _Logger;
     }
 }
