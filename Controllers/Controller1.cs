@@ -22,7 +22,7 @@ namespace Final_Project_Group_1.controller
 
         public IActionResult Get()
         {
-            return Ok();
+            return Ok(_Context.ServiceContext1.ToList());
         }
     }
 }
