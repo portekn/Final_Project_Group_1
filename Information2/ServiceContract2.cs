@@ -2,9 +2,9 @@ using Model2.Model;
 using System.Collections.Generic;  
 using System.Linq;  
 
-    namespace NameOfProject.Information1
+    namespace Final_Project_Group_1.Information2
     {  
-        public class Location : ILocation 
+        public class ServiceContract2: IServiceContract2 
         {   
             public NameOfClassContext _VariableDbContext;  
             public VariableService (VariableContext variableDbContext)  

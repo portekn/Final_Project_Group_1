@@ -1,7 +1,7 @@
-using Model1.Model;
+using Final_Project_Group_1.Models;
 using System.Collections.Generic;
 
-namespace IServiceContract1.Information1  
+namespace Final_Project_Group_1.Information1  
     {  
         //Interface name needs to include “I” at the beginning 
         public interface INameOFServiceContract

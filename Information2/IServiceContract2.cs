@@ -1,10 +1,10 @@
 using Models.Model2;
 using System.Collections.Generic;
 
-namespace IServiceContract1.Information1
+namespace Final_Project_Group_1.Information2
 {
     //Interface name needs to include “I” at the beginning 
-    public interface INameOFServiceContract
+    public interface IServiceContract2
     {
         Variable AddVariable(VariableType variable);
         List<Variable> GetVariable();
