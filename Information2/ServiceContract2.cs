@@ -1,4 +1,4 @@
-using Model2.Model;  
+using Final_Project_Group_1.Models; 
 using System.Collections.Generic;  
 using System.Linq;  
 
@@ -6,44 +6,43 @@ using System.Linq;
     {  
         public class ServiceContract2: IServiceContract2 
         {   
-            public NameOfClassContext _VariableDbContext;  
-            public VariableService (VariableContext variableDbContext)  
-            {  
-                _variableDbContext = variableDbContext;  
+            public LocationContext _locationDbContext;  
+            public ServiceContract2 (LocationContext locationDbContext)  
+            {
+                _locationDbContext = locationDbContext;
             }  
 
             //Methods below reference variables from IServiceContract 1
-            public Variable AddVariable(VariableType variable)  
-            {  
-                _variableDbContext.Variable.Add(variable);  
-                _variableDbContext.SaveChanges();  
-                return variable;  
+            public Location AddLocation(Location location)  
+            {
+                _locationDbContext.Locations.Add(location);
+                _locationDbContext.SaveChanges();  
+                return location;  
             }  
-            public List<Variable> GetVariables()  
+            public List<Location> GetLocations()  
             {  
-                return _variableDbContext.Variable.ToList();  
-            }  
-      
-            public void UpdateVariable(VariableType variable)  
-            {  
-                _variableDbContext.Variable.Update(variable);  
-                _variableDbContext.SaveChanges();  
+                return _locationDbContext.Locations.ToList();  
             }  
       
-            public void DeleteVariable(VariableType variable1)  
+            public void UpdateLocation(Location location)  
+            {
+                _locationDbContext.Locations.Update(location);
+                _locationDbContext.SaveChanges();  
+            }  
+      
+            public void DeleteLocation(int Id)  
             {  
-                var variable2 = _variableDbContext.Variable.FirstOrDefault(x => 
-x.variable1 == variable1);
-                if (employee != null)  
-                {  
-                    _variableDbContext.Remove(variable2);  
-                    _variableDbContext.SaveChanges();  
+                var variable2 = _locationDbContext.Locations.FirstOrDefault(x => x.Id == Id);
+                if (variable2 != null)  
+                {
+                    _locationDbContext.Remove(variable2);
+                    _locationDbContext.SaveChanges();  
                 }  
             }  
       
-            public Variable GetVariable(VariableType variable1)  
+            public Location GetLocation(int Id)  
             {  
-                return _variableDbContext.Variable.FirstOrDefault(x => x. variable1 == variable1);  
+                return _locationDbContext.Locations.FirstOrDefault(x => x.Id == Id);  
             }  
         }  
  }  

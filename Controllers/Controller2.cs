@@ -1,4 +1,5 @@
 using Final_Project_Group_1.Information2;
+using Final_Project_Group_1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -9,54 +10,54 @@ namespace Final_Project_Group_1.controller
     [ApiController]
     public class Controller2 : ControllerBase
     {
-        private readonly ILogger<Controller1> _Logger;
+        private readonly ILogger<Controller2> _Logger;
 
-        private readonly IServiceContract2 _variableService;
-        public Controller2(IServiceContract2 variableService)
+        private readonly IServiceContract2 _location;
+        public Controller2(IServiceContract2 location)
         {
-            _variableService = variableService;
+            _location = location;
         }
         [HttpGet]
         [Route("[action]")]
-        [Route("api/ModelFile/GetVariables")]
-        public IEnumerable<Variable> GetVariables()
+        [Route("api/Model2/GetLocation")]
+        public IEnumerable<Location> GetLocations()
         {
-            return _variableService.GetVariables();
+            return _location.GetLocations();
         }
         [HttpPost]
         [Route("[action]")]
-        [Route("api/ModelFile/AddVariable")]
-        public IActionResult AddVariable(Variable variable)
+        [Route("api/Model2/AddLocation")]
+        public IActionResult AddLocation(Location location)
         {
-            _variableService.AddVariable(variable);
+            _location.AddLocation(location);
             return Ok();
         }
         [HttpPost]
         [Route("[action]")]
-        [Route("api/ModelFile/UpdateVariable")]
-        public IActionResult UpdateVariable(Variable variable)
+        [Route("api/Model2/UpdateLocation")]
+        public IActionResult UpdateLocation(Location location)
         {
-            _variableService.UpdateVariable(variable);
+            _location.UpdateLocation(location);
             return Ok();
         }
         [HttpDelete]
         [Route("[action]")]
-        [Route("api/ModelFile/DeleteVariable")]
-        public IActionResult DeleteVariable(VariableType variable1)
+        [Route("api/Model2/DeleteLocation")]
+        public IActionResult DeleteLocation(int Id)
         {
-            var variable2 = _variableService.GetVariable(variable1);
+            var variable2 = _location.GetLocation(Id);
             if (variable2 != null)
             {
-                _variableService.DeleteVariable(variable2.variable1);
+                _location.DeleteLocation(variable2.Id);
                 return Ok();
             }
-            return NotFound($"Thing Not Found with ID : {variable2.variable1}");
+            return NotFound($"Thing Not Found with ID : {variable2.Id}");
         }
         [HttpGet]
-        [Route("GetVariable")]
-        public Employee GetVariable(VariableType variable1)
+        [Route("GetLocation")]
+        public Location GetLocation(int Id)
         {
-            return _variableService.GetVariable(variable1);
+            return _location.GetLocation(Id);
         }
     }
 }
