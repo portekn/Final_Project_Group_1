@@ -33,77 +33,240 @@
    - I recommend each member speaks on their contribution to the project.
 
 ### Project Layout
-#### 1. Git Repository Link: https://github.com/portekn/Final_Project_Group_1.git 
-#### 2. SQL Database file with the following tables:
+#### 1.	Project Timeline - Due December 6, 2021
+   - Evan Kelley, Kelli Porter – Set 1 and Set 2:
+      - Controller 1, Controller 2
+      - Model 1, Model 2
+      - Service Contract 1, Service Contract 2
+      - IService Contract 1, IService Contract 2
+      - Service Context 1, Service Context 2
+      
+   - Felix Odogwu, José Chacón Ascue – Set3:
+      - Controller 3
+      - Service Contract 3
+      - IService Contract 3
+      - Service Context 3
+      
+   - Yifei Yang, Mari Brenner – Set 4:
+      - Controller 4
+      - Service Contract 4
+      - IService Contract 4
+      - Service Context 4
+ 
+#### 2.Git Repository Link: https://github.com/portekn/Final_Project_Group_1.git 
+#### 3. SQL Database file with the following tables:
    - File Name: “FILENAME.MFD”
-   - Table 1 (REQUIRED)
+   - Table 1 (REQUIRED) - Basic Information
       
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
       |  ID	   |  FullName  |  Birthdate |  Program   |  Year      |
-   - Table 2
+   - Table 2 - Location
 
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  Blank     |  Blank     |  Blank     |  Blank     |  Blank     |
-   - Table 3
+      |  ID     |  State    |  City    |  ZipCode    |  Street Name     |
+   - Table 3 - Interests
 
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  Blank     |  Blank     |  Blank     |  Blank     |  Blank     |
-   - Table 4
+      |  Category    |  Specific Interest    |  Years in interest    |  Expensive (T/F)    |  Time consumption (hours/week)     |
+   - Table 4 - Pets
 
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  Blank     |  Blank     |  Blank     |  Blank     |  Blank     |
+      |  Has Pet (T/F)     | Type of Pet    |  Breed   |  Number of legs   |  LifeSpan    |
 
-#### 3. Controllers – Located in the Controllers folder
+#### 4. Controllers – Located in the Controllers folder
    - Controller 1 (REQUIRED)
-     - Notes:
-
+     - Pseudo Code Layout Example:
+     
+````
+using System.Collections.Generic;  
+using Microsoft.AspNetCore.Mvc;  
+using NameOfProject.Model;
+using NameOfProject.Information 1;
+namespace NameOfProject.Controllers  
+{  
+    [Route("api/[controller]")]  
+    [ApiController]  
+    public class VariableController : ControllerBase  
+    {  
+        private readonly INameOFServiceContract _variableService;  
+        public VariableController(INameOFServiceContract variableService)  
+        {  
+            _variableService = variableService;  
+        }  
+        [HttpGet]  
+        [Route("[action]")]  
+        [Route("api/ModelFile/GetVariables")]  
+        public IEnumerable<Variable> GetVariables()  
+        {  
+            return _variableService.GetVariables();  
+        }  
+        [HttpPost]  
+        [Route("[action]")]  
+        [Route("api/ModelFile/AddVariable")]  
+        public IActionResult AddVariable(Variable variable)  
+        {  
+            _variableService.AddVariable(variable);  
+            return Ok();  
+        }  
+        [HttpPost]  
+        [Route("[action]")]  
+        [Route("api/ModelFile/UpdateVariable")]  
+        public IActionResult UpdateVariable(Variable variable)  
+        {  
+            _variableService.UpdateVariable(variable);  
+            return Ok();  
+        }  
+        [HttpDelete]  
+        [Route("[action]")]  
+        [Route("api/ModelFile/DeleteVariable")]  
+        public IActionResult DeleteVariable(VariableType variable1)  
+        {  
+            var variable2 = _variableService.GetVariable(variable1);  
+            if (variable2 != null)  
+            {  
+                _variableService.DeleteVariable(variable2.variable1);  
+                return Ok();  
+            }  
+            return NotFound($"Thing Not Found with ID : {variable2.variable1}");  
+        }  
+        [HttpGet]  
+        [Route("GetVariable")]  
+        public Employee GetVariable(VariableType variable1)  
+        {  
+            return _variableService.GetVariable(variable1);  
+        }  
+    }  
+}
+````
    - Controller 2
-     - Notes:
-
    - Controller 3
-     - Notes:
-
    - Controller 4
-     - Notes:
 
-#### 4.	Models – Located in the Models folder
+#### 5.	Models – Located in the Models folder
    - Model 1 (REQUIRED)
-     - Notes:
-
+     - Pseudo Code Layout Example:
+````
+using System.ComponentModel.DataAnnotations
+namespace NameOfProject.Model
+{
+	public class NameOfClass 
+	{
+		[Key]
+		public variableType variableName {get; set;}
+		//Continue to add variables according to the corresponding table 
+   }
+}
+````
    - Model 2
-     - Notes:
-     
    - Model 3
-     - Notes:
-     
    - Model 4
-     - Notes:
 
-#### 5.	Information Folders/Service Contracts – Each bullet below is a folder that contains two files:
+#### 6.	Information Folders/Service Contracts – Each bullet below is a folder that contains two files:
    - Information 1 (REQUIRED)
      - ServiceContract 1
-       - Notes:
-     - IServiceContract 1
-       - Notes:
+       - Pseudo Code Layout Example:
+````
+using NameOfProject.Model;  
+using System.Collections.Generic;  
+using System.Linq;  
+    namespace NameOfProject.Information 1
+    {  
+        public class NameOfClass : INameOfClass 
+        {   
+            public NameOfClassContext _VariableDbContext;  
+            public VariableService (VariableContext variableDbContext)  
+            {  
+                _variableDbContext = variableDbContext;  
+            }  
 
+            //Methods below reference variables from IServiceContract 1
+            public Variable AddVariable(VariableType variable)  
+            {  
+                _variableDbContext.Variable.Add(variable);  
+                _variableDbContext.SaveChanges();  
+                return variable;  
+            }  
+            public List<Variable> GetVariables()  
+            {  
+                return _variableDbContext.Variable.ToList();  
+            }  
+      
+            public void UpdateVariable(VariableType variable)  
+            {  
+                _variableDbContext.Variable.Update(variable);  
+                _variableDbContext.SaveChanges();  
+            }  
+      
+            public void DeleteVariable(VariableType variable1)  
+            {  
+                var variable2 = _variableDbContext.Variable.FirstOrDefault(x => 
+x.variable1 == variable1);
+                if (employee != null)  
+                {  
+                    _variableDbContext.Remove(variable2);  
+                    _variableDbContext.SaveChanges();  
+                }  
+            }  
+      
+            public Variable GetVariable(VariableType variable1)  
+            {  
+                return _variableDbContext.Variable.FirstOrDefault(x => x. variable1 == variable1);  
+            }  
+        }  
+ }  
+````
+   - IServiceContract 1
+      - Pseudo Code Layout Example:
+````
+using NameOfProject.Model;  
+using System.Collections.Generic;  
+    namespace NameOfProject.Information 1  
+    {  
+        //Interface name needs to include “I” at the beginning 
+        public interface INameOFServiceContract 
+        {  
+            Variable AddVariable(VariableType variable);  
+            List<Variable> GetVariable();  
+            void UpdateVariable(VariableType variable);  
+            void DeleteVariable(VariableType variable);  
+            Variable GetVariable(VariableType variable1);
+        }  
+ }  
+````
    - Information 2
      - ServiceContract 2
-       - Notes:
      - IServiceContract 2
-       - Notes:
 
    - Information 3
      - ServiceContract 3
-       - Notes:
      - IServiceContract 3
-       - Notes:
 
    - Information 4
      - ServiceContract 4
-       - Notes:
      - IServiceContract 4
-       - Notes:
+
+#### 7.	Context Files – Located in the main project
+- ServiceContext 1
+  - Pseudo Code Layout Example:
+````
+using Microsoft.EntityFrameworkCore;    
+using NameOfProject.Model;      
+    namespace NameOfProject    
+    {    
+        public class VariableContext : DbContext    
+        {    
+            public EmployeeContext(DbContextOptions<VariableContext> options): base(options)    
+            {}    
+    	
+            public DbSet<Variable> Variables {get; set;}    
+        }    
+    }
+````
+- ServiceContext 2
+- ServiceContext 3
+- ServiceContext 4
+
