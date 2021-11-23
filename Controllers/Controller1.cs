@@ -1,28 +1,63 @@
+using Final_Project_Group_1.Information1;
+using Final_Project_Group_1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Final_Project_Group_1;
-
+using System.Collections.Generic;
 
 namespace Final_Project_Group_1.controller
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route ("[controller]")]
     public class Controller1 : ControllerBase
     {
         private readonly ILogger<Controller1> _Logger;
-        private readonly ServiceContext1 _Context;
-        
-        public Controller1(ILogger<Controller1> Logger, ServiceContext1 Context)
+
+        private readonly IServiceContract1 _location;
+        public Controller1(IServiceContract1 location)
         {
-            _Logger = Logger;
-            _Context = Context;
+            _location = location;
         }
-
         [HttpGet]
-
-        public IActionResult Get()
+        [Route("[action]")]
+        [Route("api/Model2/GetLocation")]
+        public IEnumerable<Location> GetLocations()
         {
-            return Ok(_Context.ServiceContext1.ToList());
+            return _location.GetLocations();
+        }
+        [HttpPost]
+        [Route("[action]")]
+        [Route("api/Model2/AddLocation")]
+        public IActionResult AddLocation(Location location)
+        {
+            _location.AddLocation(location);
+            return Ok();
+        }
+        [HttpPost]
+        [Route("[action]")]
+        [Route("api/Model2/UpdateLocation")]
+        public IActionResult UpdateLocation(Location location)
+        {
+            _location.UpdateLocation(location);
+            return Ok();
+        }
+        [HttpDelete]
+        [Route("[action]")]
+        [Route("api/Model2/DeleteLocation")]
+        public IActionResult DeleteLocation(int Id)
+        {
+            var variable2 = _location.GetLocation(Id);
+            if (variable2 != null)
+            {
+                _location.DeleteLocation(variable2.Id);
+                return Ok();
+            }
+            return NotFound($"Thing Not Found with ID : {variable2.Id}");
+        }
+        [HttpGet]
+        [Route("GetLocation")]
+        public Location GetLocation(int Id)
+        {
+            return _location.GetLocation(Id);
         }
     }
 }
