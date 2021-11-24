@@ -12,52 +12,52 @@ namespace Final_Project_Group_1.controller
     {
         private readonly ILogger<Controller1> _Logger;
 
-        private readonly IServiceContract1 _location;
-        public Controller1(IServiceContract1 location)
+        private readonly IServiceContract1 _basic;
+        public Controller1(IServiceContract1 basic)
         {
-            _location = location;
+            _basic = basic;
         }
         [HttpGet]
         [Route("[action]")]
-        [Route("api/Model2/GetLocation")]
-        public IEnumerable<Location> GetLocations()
+        [Route("api/Model1/GetBasic")]
+        public IEnumerable<Basic> GetBasics()
         {
-            return _location.GetLocations();
+            return _basic.GetBasics();
         }
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model2/AddLocation")]
-        public IActionResult AddLocation(Location location)
+        [Route("api/Model1/AddBasic")]
+        public IActionResult AddBasic(Basic basic)
         {
-            _location.AddLocation(location);
+            _basic.AddBasic(basic);
             return Ok();
         }
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model2/UpdateLocation")]
-        public IActionResult UpdateLocation(Location location)
+        [Route("api/Model1/UpdateBasic")]
+        public IActionResult UpdateBasic(Basic basic)
         {
-            _location.UpdateLocation(location);
+            _basic.UpdateBasic(basic);
             return Ok();
         }
         [HttpDelete]
         [Route("[action]")]
-        [Route("api/Model2/DeleteLocation")]
-        public IActionResult DeleteLocation(int Id)
+        [Route("api/Model1/DeleteBasic")]
+        public IActionResult DeleteBasic(int Id)
         {
-            var variable2 = _location.GetLocation(Id);
+            var variable2 = _basic.GetBasic(Id);
             if (variable2 != null)
             {
-                _location.DeleteLocation(variable2.Id);
+                _basic.DeleteBasic(variable2.Id);
                 return Ok();
             }
             return NotFound($"Thing Not Found with ID : {variable2.Id}");
         }
         [HttpGet]
-        [Route("GetLocation")]
-        public Location GetLocation(int Id)
+        [Route("GetBasic")]
+        public Basic GetBasic(int Id)
         {
-            return _location.GetLocation(Id);
+            return _basic.GetBasic(Id);
         }
     }
 }

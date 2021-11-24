@@ -1,54 +1,55 @@
 using Final_Project_Group_1.Models; 
 using System.Collections.Generic;  
-using System.Linq;  
+using System.Linq;
 
-    namespace Final_Project_Group_1.Information1
-    {  
-        public class ServiceContract1: IServiceContract1
-        {   
-            public LocationContext _locationDbContext;  
-            public ServiceContract1 (LocationContext locationDbContext)  
-            {
-                _locationDbContext = locationDbContext;
-            }  
+namespace Final_Project_Group_1.Information1
+{
+    public class ServiceContract1 : IServiceContract1
+    {
+        public BasicContext _basicDbContext;
+        public ServiceContract1(BasicContext basicDbContext)
+        {
+            _basicDbContext = basicDbContext;
+        }
 
         //Methods below reference variables from IServiceContract2
         //----------Add Location----------//
-            public Location AddLocation(Location location)  
-            {
-                _locationDbContext.Locations.Add(location);
-                _locationDbContext.SaveChanges();  
-                return location;
-            }
+        public Basic AddBasic(Basic basic)
+        {
+            _basicDbContext.Basics.Add(basic);
+            _basicDbContext.SaveChanges();
+            return basic;
+        }
 
         //----------Get Locations----------//
-            public List<Location> GetLocations()  
-            {  
-                return _locationDbContext.Locations.ToList();  
-            }
+        public List<Basic> GetBasics()
+        {
+            return _basicDbContext.Basics.ToList();
+        }
 
         //----------Update Location----------//
-            public void UpdateLocation(Location location)  
-            {
-                _locationDbContext.Locations.Update(location);
-                _locationDbContext.SaveChanges();  
-            }
+        public void UpdateBasic(Basic basic)
+        {
+            _basicDbContext.Basics.Update(basic);
+            _basicDbContext.SaveChanges();
+        }
 
         //----------Delete Location----------//
-            public void DeleteLocation(int Id)  
-            {  
-                var variable2 = _locationDbContext.Locations.FirstOrDefault(x => x.Id == Id);
-                if (variable2 != null)  
-                {
-                    _locationDbContext.Remove(variable2);
-                    _locationDbContext.SaveChanges();  
-                }  
+        public void DeleteBasic(int Id)
+        {
+            var variable2 = _basicDbContext.Basics.FirstOrDefault(x => x.Id == Id);
+            if (variable2 != null)
+            {
+                _basicDbContext.Remove(variable2);
+                _basicDbContext.SaveChanges();
             }
+        }
 
         //----------Get Location----------//
-            public Location GetLocation(int Id)  
-            {  
-                return _locationDbContext.Locations.FirstOrDefault(x => x.Id == Id);  
-            }  
-        }  
- }  
+        public Basic GetBasic(int Id)
+        {
+            return _basicDbContext.Basics.FirstOrDefault(x => x.Id == Id);
+        }
+    }
+
+}  

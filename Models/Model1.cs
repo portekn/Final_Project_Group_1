@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 namespace Final_Project_Group_1.Models
 {
 
-    public class Location1
+    public class Basic
     {
         [Key]
         public int Id { get; set; }
         public string FullName { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string program { get; set; }
-        public string year { get; set; }
+        public int BirthDate { get; set; }
+        public string Program { get; set; }
+        public int Year { get; set; }
 
     }
 }
