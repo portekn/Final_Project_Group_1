@@ -34,9 +34,9 @@ using System.Linq;
             }
 
         //----------Delete Movie----------//
-            public void DeleteMovie(string movie)  
+            public void DeleteMovie(int Id)  
             {  
-                var variable2 = _movieDbcontext.Movies.FirstOrDefault(x => x.movie == movie);
+                var variable2 = _movieDbcontext.Movies.FirstOrDefault(x => x.Id == Id);
                 if (variable2 != null)  
                 {
                     _movieDbcontext.Remove(variable2);
@@ -45,9 +45,9 @@ using System.Linq;
             }
 
         //----------Get Movie----------//
-            public Movie GetMovie(string movie)  
+            public Movie GetMovie(int Id)  
             {  
-                return _movieDbcontext.Movies.FirstOrDefault(x => x.movie == movie);  
+                return _movieDbcontext.Movies.FirstOrDefault(x => x.Id == Id);  
             }  
         }  
  }
