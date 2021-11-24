@@ -79,7 +79,7 @@
 
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |  Column 6  |
       | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  ID|       |  MovieName |  Year      |  Director  |   Score    |    Type    |
+      |  ID        |  MovieName |  Year      |  Director  |   Score    |    Type    |
 
 #### 4. Controllers – Located in the Controllers folder
    - Controller 1 (REQUIRED)
