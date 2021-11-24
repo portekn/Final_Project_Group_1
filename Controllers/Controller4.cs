@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace Final_Project_Group_1.controller
+namespace Final_Project_Group_1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -43,21 +43,21 @@ namespace Final_Project_Group_1.controller
         [HttpDelete]
         [Route("[action]")]
         [Route("api/Model4/DeleteMovie")]
-        public IActionResult DeleteMovie(string movie)
+        public IActionResult DeleteMovie(int Id)
         {
-            var variable2 = _movie.GetMovie(movie);
+            var variable2 = _movie.GetMovie(Id);
             if (variable2 != null)
             {
-                _movie.DeleteMovie(variable2.movie);
+                _movie.DeleteMovie(variable2.Id);
                 return Ok();
             }
-            return NotFound($"Thing Not Found with movie : {variable2.movie}");
+            return NotFound($"Thing Not Found with movie : {variable2.Id}");
         }
         [HttpGet]
         [Route("GetMovie")]
-        public Movie GetMovie(string movie)
+        public Movie GetMovie(int Id)
         {
-            return _movie.GetMovie(movie);
+            return _movie.GetMovie(Id);
         }
     }
 }

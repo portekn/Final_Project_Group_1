@@ -7,7 +7,7 @@ using System.Linq;
         public class ServiceContract4: IServiceContract4
         {   
             public MovieContext _movieDbcontext; 
-            public ServiceContract3 (MovieContext movieDbcontext)  
+            public ServiceContract4 (MovieContext movieDbcontext)  
             {
                 _movieDbcontext = movieDbcontext;
             }  

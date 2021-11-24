@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace Final_Project_Group_1.controller
+namespace Final_Project_Group_1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

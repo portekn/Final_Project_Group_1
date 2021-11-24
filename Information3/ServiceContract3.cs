@@ -1,53 +1,53 @@
 using Final_Project_Group_1.Models; 
-using System.Collections.Generic;  
-using System.Linq;  
+using System.Collections.Generic;
+using System.Linq;
 
-    namespace Final_Project_Group_1.Information2
+namespace Final_Project_Group_1.Information3
     {  
-        public class ServiceContract3: IServiceContract3 
+        public class ServiceContract3: IServiceContract3
         {   
-            public InterestContext _interestContext; 
-            public ServiceContract3 (InterestContext context)  
+            public InterestContext _interestDbContext; 
+            public ServiceContract3 (InterestContext interestDbContext)  
             {
-                _interestContext = context;
+            _interestDbContext = interestDbContext;
             }  
 
         //----------Add Interest----------//
-            public Location AddInterest(Interest interest)  
+            public Interest AddInterest(Interest interest)  
             {
-                _interestContext.Interests.Add(location);
-                _interestContext.SaveChanges();  
+            _interestDbContext.Interests.Add(interest);
+            _interestDbContext.SaveChanges();  
                 return interest;  
             }
 
         //----------Get Interests----------//
-            public List<Location> GetInterests()  
+            public List<Interest> GetInterests()  
             {  
-                return _interestContext.Interests.ToList();  
+                return _interestDbContext.Interests.ToList();  
             }
 
         //----------Update Interest----------//
             public void UpdateInterest(Interest interest)  
             {
-                _interestContext.Interests.Update(interest);
-                _interestContext.SaveChanges();  
+            _interestDbContext.Interests.Update(interest);
+            _interestDbContext.SaveChanges();  
             }
 
         //----------Delete Interest----------//
-            public void DeleteInterest(string interest)  
+            public void DeleteInterest(int Id)  
             {  
-                var variable2 = _interestContext.Interests.FirstOrDefault(x => x.interest == interest);
+                var variable2 = _interestDbContext.Interests.FirstOrDefault(x => x.Id == Id);
                 if (variable2 != null)  
                 {
-                    _interestContext.Remove(variable2);
-                    _interestContext.SaveChanges();  
+                _interestDbContext.Remove(variable2);
+                _interestDbContext.SaveChanges();  
                 }  
             }
 
         //----------Get Interest----------//
-            public Location GetInterest(string interest)  
+            public Interest GetInterest(int Id)  
             {  
-                return _interestContext.Interests.FirstOrDefault(x => x.interest == interest);  
+                return _interestDbContext.Interests.FirstOrDefault(x => x.Id == Id);  
             }  
         }  
  }  

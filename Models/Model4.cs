@@ -7,7 +7,8 @@ namespace Final_Project_Group_1.Models
     {
         [Key]
 
-        public string movie { get; set; }
+        public int Id { get; set; }
+        public string MovieName { get; set; }
 
         public int Year { get; set; }
 
