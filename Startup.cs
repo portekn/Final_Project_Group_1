@@ -31,6 +31,7 @@ namespace Final_Project_Group_1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerDocument();
             services.AddDbContextPool<DatabaseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("PDB")));
             services.AddScoped<IServiceContract1, ServiceContract1>();
@@ -46,6 +47,10 @@ namespace Final_Project_Group_1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseOpenApi();
+
+            app.UseSwaggerUi3();
 
             context.Database.Migrate();
 
