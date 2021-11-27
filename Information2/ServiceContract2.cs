@@ -6,8 +6,8 @@ using System.Linq;
     {  
         public class ServiceContract2: IServiceContract2 
         {   
-            public LocationContext _locationDbContext;  
-            public ServiceContract2 (LocationContext locationDbContext)  
+            public DatabaseContext _locationDbContext;  
+            public ServiceContract2 (DatabaseContext locationDbContext)  
             {
                 _locationDbContext = locationDbContext;
             }  

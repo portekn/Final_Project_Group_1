@@ -34,8 +34,6 @@
 
 ### Project Layout
 #### 1.	Project Timeline - Due December 6, 2021
-
-   - [x] Completed
    - Evan Kelley, Kelli Porter – Set 1 and Set 2:
       - Controller 1, Controller 2
       - Model 1, Model 2
@@ -43,14 +41,12 @@
       - IService Contract 1, IService Contract 2
       - Service Context 1, Service Context 2
       
-   - [x] Completed   
    - Felix Odogwu, José Chacón Ascue – Set3:
       - Controller 3
       - Service Contract 3
       - IService Contract 3
       - Service Context 3
       
-   - [x] Completed   
    - Yifei Yang, Mari Brenner – Set 4:
       - Controller 4
       - Service Contract 4
@@ -75,11 +71,11 @@
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
       |  Category    |  Specific Interest    |  Years in interest    |  Expensive (T/F)    |  Time consumption (hours/week)     |
-   - Table 4 - Movies
+   - Table 4 - Pets
 
-      |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |  Column 6  |
-      | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  ID        |  MovieName |  Year      |  Director  |   Score    |    Type    |
+      |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
+      | ---------- | ---------- | ---------- | ---------- | ---------- |
+      |  Has Pet (T/F)     | Type of Pet    |  Breed   |  Number of legs   |  LifeSpan    |
 
 #### 4. Controllers – Located in the Controllers folder
    - Controller 1 (REQUIRED)
