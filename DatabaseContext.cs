@@ -13,7 +13,7 @@ namespace Final_Project_Group_1
                 new Interest
                 {
                     Id = 1,
-                    interest = "Studies",
+                    InterestName = "Studies",
                     InterestYears = 3,
                     Expensive = true,
                     TimeConsumption = 2
@@ -37,11 +37,22 @@ namespace Final_Project_Group_1
                     Program = "IT",
                     YOD = 2025
                 });
+            builder.Entity<Movie>().HasData(
+                new Movie
+                {
+                    Id = 1,
+                    MovieName = "Spiderman No Way Home",
+                    Director = "Georgi",
+                    Score = 9,
+                    Type = "Action",
+                    Year = 2021
+                });
         }
 
         public DbSet<Member> Members { get; set; }
         public DbSet<Interest> Interests { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
     }
 }

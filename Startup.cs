@@ -1,6 +1,7 @@
 using Final_Project_Group_1.Information1;
 using Final_Project_Group_1.Information2;
 using Final_Project_Group_1.Information3;
+using Final_Project_Group_1.Information4;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace Final_Project_Group_1
             services.AddScoped<IServiceContract1, ServiceContract1>();
             services.AddScoped<IServiceContract2, ServiceContract2>();
             services.AddScoped<IServiceContract3, ServiceContract3>();
+            services.AddScoped<IServiceContract4, ServiceContract4>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

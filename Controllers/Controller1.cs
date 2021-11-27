@@ -1,63 +1,67 @@
 using Final_Project_Group_1.Information1;
 using Final_Project_Group_1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace Final_Project_Group_1.Controllers
+namespace FinalProject.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class Controller1 : ControllerBase
-    {
-        private readonly ILogger<Controller1> _Logger;
+    [Route("api/[controller]")]
 
-        private readonly IServiceContract1 _basic;
-        public Controller1(IServiceContract1 basic)
+    public class MemberController : ControllerBase
+    {
+        private readonly IServiceContract1 _members;
+
+        public MemberController(IServiceContract1 members)
         {
-            _basic = basic;
+            _members = members;
         }
+
         [HttpGet]
         [Route("[action]")]
-        [Route("api/Model1/GetBasic")]
-        public IEnumerable<Basic> GetBasics()
+        [Route("api/Member/GetMembers")]
+        public IEnumerable<Member> GetMembers()
         {
-            return _basic.GetBasics();
+            return _members.GetMembers();
         }
+
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model1/AddBasic")]
-        public IActionResult AddBasic(Basic basic)
+        [Route("api/Member/AddMember")]
+        public IActionResult AddMember(Member member)
         {
-            _basic.AddBasic(basic);
+            _members.AddMember(member);
             return Ok();
         }
+
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model1/UpdateBasic")]
-        public IActionResult UpdateBasic(Basic basic)
+        [Route("api/Member/UpdateMember")]
+        public IActionResult UpdateMember(Member member)
         {
-            _basic.UpdateBasic(basic);
+            _members.UpdateMember(member);
             return Ok();
         }
+
         [HttpDelete]
         [Route("[action]")]
-        [Route("api/Model1/DeleteBasic")]
-        public IActionResult DeleteBasic(int Id)
+        [Route("api/Member/DeleteMember")]
+        public IActionResult DeleteMember(int id)
         {
-            var variable2 = _basic.GetBasic(Id);
-            if (variable2 != null)
+            var existingMember = _members.GetMember(id);
+            if (existingMember != null)
             {
-                _basic.DeleteBasic(variable2.Id);
+                _members.DeleteMember(existingMember.Id);
                 return Ok();
             }
-            return NotFound($"Thing Not Found with ID : {variable2.Id}");
+            return NotFound($"Employee not found with ID: { existingMember.Id}");
         }
+
         [HttpGet]
-        [Route("GetBasic")]
-        public Basic GetBasic(int Id)
+        [Route("GetMember")]
+        public Member GetMember(int id)
         {
-            return _basic.GetBasic(Id);
+            return _members.GetMember(id);
         }
     }
 }

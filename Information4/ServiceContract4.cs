@@ -6,48 +6,48 @@ using System.Linq;
     {  
         public class ServiceContract4: IServiceContract4
         {   
-            public MovieContext _movieDbcontext; 
-            public ServiceContract4 (MovieContext movieDbcontext)  
+            public DatabaseContext _movies; 
+            public ServiceContract4 (DatabaseContext movies)  
             {
-                _movieDbcontext = movieDbcontext;
+                _movies = movies;
             }  
 
         //----------Add Movie----------//
             public Movie AddMovie(Movie movie)  
             {
-                _movieDbcontext.Movies.Add(movie);
-                _movieDbcontext.SaveChanges();  
+                _movies.Movies.Add(movie);
+                _movies.SaveChanges();  
                 return movie;  
             }
 
         //----------Get Movie----------//
             public List<Movie> GetMovies()  
             {  
-                return _movieDbcontext.Movies.ToList();  
+                return _movies.Movies.ToList();  
             }
 
         //----------Update Movie----------//
             public void UpdateMovie(Movie movie)  
             {
-                _movieDbcontext.Movies.Update(movie);
-                _movieDbcontext.SaveChanges();  
+                _movies.Movies.Update(movie);
+                _movies.SaveChanges();  
             }
 
         //----------Delete Movie----------//
             public void DeleteMovie(int Id)  
             {  
-                var variable2 = _movieDbcontext.Movies.FirstOrDefault(x => x.Id == Id);
+                var variable2 = _movies.Movies.FirstOrDefault(x => x.Id == Id);
                 if (variable2 != null)  
                 {
-                    _movieDbcontext.Remove(variable2);
-                    _movieDbcontext.SaveChanges();  
+                    _movies.Remove(variable2);
+                    _movies.SaveChanges();  
                 }  
             }
 
         //----------Get Movie----------//
             public Movie GetMovie(int Id)  
             {  
-                return _movieDbcontext.Movies.FirstOrDefault(x => x.Id == Id);  
+                return _movies.Movies.FirstOrDefault(x => x.Id == Id);  
             }  
         }  
  }

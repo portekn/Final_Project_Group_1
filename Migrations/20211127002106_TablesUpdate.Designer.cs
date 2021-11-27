@@ -3,14 +3,16 @@ using Final_Project_Group_1;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Final_Project_Group_1.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211127002106_TablesUpdate")]
+    partial class TablesUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,14 +30,14 @@ namespace Final_Project_Group_1.Migrations
                     b.Property<bool>("Expensive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("InterestName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("InterestYears")
                         .HasColumnType("int");
 
                     b.Property<int>("TimeConsumption")
                         .HasColumnType("int");
+
+                    b.Property<string>("interest")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -46,9 +48,9 @@ namespace Final_Project_Group_1.Migrations
                         {
                             Id = 1,
                             Expensive = true,
-                            InterestName = "Studies",
                             InterestYears = 3,
-                            TimeConsumption = 2
+                            TimeConsumption = 2,
+                            interest = "Studies"
                         });
                 });
 

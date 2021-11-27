@@ -1,63 +1,67 @@
 using Final_Project_Group_1.Information4;
 using Final_Project_Group_1.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace Final_Project_Group_1.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class Controller4 : ControllerBase
-    {
-        private readonly ILogger<Controller4> _Logger;
+    [Route("api/[controller]")]
 
-        private readonly IServiceContract4 _movie;
-        public Controller4(IServiceContract4 movie)
+    public class MovieController : ControllerBase
+    {
+        private readonly IServiceContract4 _movies;
+
+        public MovieController(IServiceContract4 movies)
         {
-            _movie = movie;
+            _movies = movies;
         }
+
         [HttpGet]
         [Route("[action]")]
-        [Route("api/Model4/GetMovie")]
+        [Route("api/Movie/GetMovies")]
         public IEnumerable<Movie> GetMovies()
         {
-            return _movie.GetMovies();
+            return _movies.GetMovies();
         }
+
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model4/AddMovie")]
+        [Route("api/Movie/AddMovie")]
         public IActionResult AddMovie(Movie movie)
         {
-            _movie.AddMovie(movie);
+            _movies.AddMovie(movie);
             return Ok();
         }
+
         [HttpPost]
         [Route("[action]")]
-        [Route("api/Model4/UpdateMovie")]
+        [Route("api/Movie/UpdateMovie")]
         public IActionResult UpdateMovie(Movie movie)
         {
-            _movie.UpdateMovie(movie);
+            _movies.UpdateMovie(movie);
             return Ok();
         }
+
         [HttpDelete]
         [Route("[action]")]
-        [Route("api/Model4/DeleteMovie")]
-        public IActionResult DeleteMovie(int Id)
+        [Route("api/Movie/DeleteMovie")]
+        public IActionResult DeleteMovie(int id)
         {
-            var variable2 = _movie.GetMovie(Id);
-            if (variable2 != null)
+            var existingMovie = _movies.GetMovie(id);
+            if (existingMovie != null)
             {
-                _movie.DeleteMovie(variable2.Id);
+                _movies.DeleteMovie(existingMovie.Id);
                 return Ok();
             }
-            return NotFound($"Thing Not Found with movie : {variable2.Id}");
+            return NotFound($"Employee not found with ID: { existingMovie.Id}");
         }
+
         [HttpGet]
         [Route("GetMovie")]
-        public Movie GetMovie(int Id)
+        public Movie GetMovie(int id)
         {
-            return _movie.GetMovie(Id);
+            return _movies.GetMovie(id);
         }
     }
 }
