@@ -37,7 +37,7 @@ using System.Linq;
         //----------Delete Member----------//
         public void DeleteMember(int Id)  
             {  
-                var variable2 = _members.Locations.FirstOrDefault(x => x.Id == Id);
+                var variable2 = _members.Members.FirstOrDefault(x => x.Id == Id);
                 if (variable2 != null)  
                 {
                     _members.Remove(variable2);
