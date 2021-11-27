@@ -33,9 +33,9 @@ namespace Final_Project_Group_1
                 {
                     Id = 1,
                     FullName = "Jose Chacon",
-                    BirthDate = 2001,
+                    BirthDate = "11/29/2001",
                     Program = "IT",
-                    YOD = 2025
+                    Year = "Freshman"
                 });
             builder.Entity<Movie>().HasData(
                 new Movie
