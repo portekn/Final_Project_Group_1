@@ -1,10 +1,12 @@
 ﻿using Final_Project_Group_1.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Final_Project_Group_1
 {
     public class DatabaseContext : DbContext
     {
+        private DateTime date = new DateTime(2001, 11, 29);
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         { }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -13,7 +15,7 @@ namespace Final_Project_Group_1
                 new Interest
                 {
                     Id = 1,
-                    InterestName = "Studies",
+                    InterestName = "Music",
                     InterestYears = 3,
                     Expensive = true,
                     TimeConsumption = 2
@@ -23,18 +25,18 @@ namespace Final_Project_Group_1
                 new Location
                 {
                     Id = 1,
-                    State = "Test",
-                    City = "Cusco",
-                    ZipCode = 08000,
-                    StreetName = "Los Saucos"
+                    State = "New York",
+                    City = "New York",
+                    ZipCode = 10001,
+                    StreetName = "8th Street"
                 });
             builder.Entity<Member>().HasData(
                 new Member
                 {
                     Id = 1,
                     FullName = "Jose Chacon",
-                    BirthDate = "11/29/2001",
-                    Program = "IT",
+                    BirthDate = date,
+                    Program = "IT Software Development",
                     Year = "Freshman"
                 });
             builder.Entity<Movie>().HasData(
@@ -42,7 +44,7 @@ namespace Final_Project_Group_1
                 {
                     Id = 1,
                     MovieName = "Spiderman No Way Home",
-                    Director = "Georgi",
+                    Director = "Jon Watts",
                     Score = 9,
                     Type = "Action",
                     Year = 2021
