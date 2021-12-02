@@ -71,11 +71,11 @@
       |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
       | ---------- | ---------- | ---------- | ---------- | ---------- |
       |  Category    |  Specific Interest    |  Years in interest    |  Expensive (T/F)    |  Time consumption (hours/week)     |
-   - Table 4 - Pets
+   - Table 4 - Movies
 
-      |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  |
-      | ---------- | ---------- | ---------- | ---------- | ---------- |
-      |  Has Pet (T/F)     | Type of Pet    |  Breed   |  Number of legs   |  LifeSpan    |
+      |  Column 1  |  Column 2  |  Column 3  |  Column 4  |  Column 5  | Column 6 |
+      | ---------- | ---------- | ---------- | ---------- | ---------- |----------
+      | ID         | MovieName  |  Year      |  Director   |  Score    |   type   |
 
 #### 4. Controllers – Located in the Controllers folder
    - Controller 1 (REQUIRED)
